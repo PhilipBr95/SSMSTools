@@ -1,7 +1,4 @@
-﻿extern alias Ssms2012;
-extern alias Ssms2014;
-extern alias Ssms2016;
-extern alias Ssms2017;
+﻿extern alias Ssms2017;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
@@ -133,18 +130,6 @@ namespace SsmsSchemaFolders
                             debug_message("SsmsVersion:2017");
                             return new Ssms2017::SsmsSchemaFolders.ObjectExplorerExtender(this, Options);
 
-                        case 13:
-                            debug_message("SsmsVersion:2016");
-                            return new Ssms2016::SsmsSchemaFolders.ObjectExplorerExtender(this, Options);
-
-                        case 12:
-                            debug_message("SsmsVersion:2014");
-                            return new Ssms2014::SsmsSchemaFolders.ObjectExplorerExtender(this, Options);
-
-                        case 11:
-                            debug_message("SsmsVersion:2012");
-                            return new Ssms2012::SsmsSchemaFolders.ObjectExplorerExtender(this, Options);
-
                         default:
                             ActivityLogEntry(__ACTIVITYLOG_ENTRYTYPE.ALE_INFORMATION, String.Format("SqlWorkbench.Interfaces.dll v{0}:{1}", ssmsInterfacesVersion.FileMajorPart, ssmsInterfacesVersion.FileMinorPart));
                             break;
@@ -152,7 +137,7 @@ namespace SsmsSchemaFolders
                 }
 
                 ActivityLogEntry(__ACTIVITYLOG_ENTRYTYPE.ALE_WARNING, "Unknown SSMS Version. Defaulting to 2016.");
-                return new Ssms2016::SsmsSchemaFolders.ObjectExplorerExtender(this, Options);
+                return new Ssms2017::SsmsSchemaFolders.ObjectExplorerExtender(this, Options);
             }
             catch (Exception ex)
             {

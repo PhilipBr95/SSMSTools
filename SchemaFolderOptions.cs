@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.Shell;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace SsmsSchemaFolders
@@ -24,5 +25,10 @@ namespace SsmsSchemaFolders
         [DisplayName("Use Object Icon")]
         [Description("Use the icon of the last child node as the folder icon. If false then use the parent node (i.e. folder) icon.")]
         public bool UseObjectIcon { get; set; } = true;
+
+        [Category("Folder Display Options")]
+        [DisplayName("Separators")]
+        [Description("Create folders at the following separators")]
+        public List<string> Separators { get; set; } = new List<string> { ".", "CU_" };
     }
 }
